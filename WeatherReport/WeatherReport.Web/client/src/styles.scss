@@ -1,0 +1,151 @@
+﻿/* You can add global styles to this file, and also import other style files */
+
+/* Reset */
+
+html,
+body,
+div {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Box-sizing border-box */
+
+* {
+    box-sizing: border-box;
+}
+
+/* Set up a default font and some padding to provide breathing room */
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 20px;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+ul {
+    margin: 10px 0 0;
+    padding: 0 0 0 20px;
+}
+
+li {
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.btn {
+    background-color: #106cc8;
+    border-style: none;
+    color: rgba(255, 255, 255, 0.87);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    height: 40px;
+    padding: 8px 18px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #28739e;
+    }
+
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        filter: alpha(opacity=65);
+        box-shadow: none;
+        opacity: 0.65;
+    }
+}
+
+/* Form */
+
+.form-validation {
+    .form-control.ng-dirty {
+        &.ng-invalid {
+            border-color: #f05050;
+        }
+
+        &.ng-valid,
+        &.ng-valid:focus {
+            border-color: #27c24c;
+        }
+    }
+}
+
+.error-layout .error-grid {
+    max-width: 998px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.error-layout .error-grid button {
+    background: transparent;
+    border: 1px solid #7a7a7a;
+    color: #231f20;
+    box-shadow: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: auto;
+    margin: 1.6rem 0;
+    min-height: 2.8rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2.4rem;
+    padding: 0 2rem;
+}
+
+.eshop-error .error-layout .error-grid button {
+    min-width: 180px;
+}
+
+
+
+.header-something {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.text-error {
+    padding-top: 20px;
+}
+
+
+
+.global-header #MainMenu {
+    display: block !important;
+}
+
+@media (min-width: 320px) {
+    .global-header #MainMenu {
+        display: none !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .eshop-error .error-layout .error-grid {
+        text-align: left;
+        margin: 100px;
+    }
+
+    .eshop-error .error-icon {
+        margin: 0;
+    }
+}
+
+@media (min-width: 978px) {
+    .global-header #MainMenu {
+        display: block !important;
+    }
+}
+
