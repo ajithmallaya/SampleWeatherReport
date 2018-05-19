@@ -20,25 +20,24 @@ namespace WeatherReport.Web.Services
     public class WeatherService : IWeatherService
     {
         private readonly IApiHelper _apiHelper;
-        private readonly string _isMockedResponse;
-        public WeatherService(IApiHelper apiHelper)
+        private bool _isMockedResponse;
+        public WeatherService(IApiHelper apiHelper,bool isMocked = true)
         {
             _apiHelper = apiHelper;
-            _isMockedResponse = ConfigurationManager.AppSettings["IsMockedResponse"]; //Actual Weather Api not working
-
+            _isMockedResponse = isMocked && Convert.ToBoolean(ConfigurationManager.AppSettings["IsMockedResponse"]); //Actual Weather Api not working
         }
         public GetWeatherResponse GetWeather(string country, string city)
         {
             try
             {
-                if (_isMockedResponse.Equals("false"))
+                if (_isMockedResponse.Equals(false))
                 {
                     var urlpath = $"?op=GetWeather&&country={country}&&city={city}";
                     var response = _apiHelper.ExecuteApiCallAsync(urlpath);
 
                     return new GetWeatherResponse()
                     {
-                        WeatherModel = response.Content.ReadAsAsync<Weather>().Result
+                       WeatherModel = response.Content.ReadAsAsync<Weather>().Result
                     };
                 }
 
@@ -57,7 +56,7 @@ namespace WeatherReport.Web.Services
         {
             try
             {
-                if (_isMockedResponse.Equals("false"))
+                if (_isMockedResponse.Equals(false))
                 {
                     var urlpath = $"?op=GetGeoLocations";
                     var response = _apiHelper.ExecuteApiCallAsync(urlpath);

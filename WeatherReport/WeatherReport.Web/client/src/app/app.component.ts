@@ -4,13 +4,19 @@ import { GeoLocation } from './../Models/GeoLocations';
 import { SearchService } from './../Search/Search.service';
 import { Observable } from 'rxjs/Rx';
 import { Weather } from './../Models/Weather';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    constructor(public weather: Weather,public _searchService: SearchService,public cities: Observable<City>,private geolocation: GeoLocation) {
+    constructor(public elementRef: ElementRef,public weatherForm: FormGroup,
+        public weather: Weather,public _searchService: SearchService,
+        public cities: Observable<City>,private geolocation: Observable<GeoLocation>) {
+      const native = this.elementRef.nativeElement;
+      this.geolocation = native.getAttribute('GeoLocations');
+      _searchService.setLocation(this.geolocation);
     }
 
     onCountrySearched(event) {

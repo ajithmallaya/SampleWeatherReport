@@ -1,0 +1,10 @@
+@model WeatherReport.Web.Models.GetGeoLocationsResponse
+
+
+@Html.AntiForgeryToken()
+
+<app-root awards='@Html.Raw(Json.Encode(Model.GeoLocations))'></app-root>
+
+@section scripts {
+    @Html.ScriptIncludes("app.js")
+}
