@@ -1,15 +1,15 @@
-﻿@using UILibrary.Mvc.Helpers
-@model WeatherReport.Web.Models.GetGeoLocationsResponse
+﻿@model WeatherReport.Web.Models.GetGeoLocationsResponse
 
 <!DOCTYPE html>
-<html ng-csp="no-unsafe-eval" ng-app="app" data-api-version="@ViewBag.Version" class="responsive">
+<html ng-csp="no-unsafe-eval" ng-app="app"  class="responsive">
 <head>
-    <title>@ViewBag.Title</title>
-    @Html.ScriptInclude("app.css", "src")
+    <base href="@Url.Content("~/")">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
 </head>
 <body id="pageContainer">
-<div class="container body-content">
-   @RenderBody()
-</div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
 </body>
 </html>

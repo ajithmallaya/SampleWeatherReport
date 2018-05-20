@@ -6,20 +6,16 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class SearchService {
-
+ locations: Observable<GeoLocation>;
     constructor(private http: Http) { }
 
-   getCitiesByCountry(request: string): Observable<GeoLocation[]> {
-        const url = 'http://localhost:4200/cities/' + request;
-        const headers = new Headers();
-      
-        return this.http.request(url)
-            .map(response => response.json() as GeoLocation[]);
-    }
+    setLocation(locationsArray: Observable<GeoLocation>) {
+               this.locations = locationsArray;
+       }
 
-
+    
     getWeatherReport(country: string, city: string): Observable<Weather> {
-        const url = 'http://localhost:4200/Weather/' + country + '/' + city;
+        const url = 'http://localhost:4242/Weather/' + country + '/' + city;
         const headers = new Headers();
       
         return this.http.request(url)

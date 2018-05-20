@@ -3,8 +3,10 @@
 
 @Html.AntiForgeryToken()
 
-<app-root awards='@Html.Raw(Json.Encode(Model.GeoLocations))'></app-root>
+<app-root Locations='@Html.Raw(Json.Encode(Model.GeoLocations))'></app-root>
 
-@section scripts {
-    @Html.ScriptIncludes("app.js")
-}
+<script src="/client/dist/inline.bundle.js"></script>
+<script src="/client/dist/polyfills.bundle.js"></script>
+<script src="/client/dist/vendor.bundle.js"></script>
+<script src="/client/dist/main.bundle.js"></script>
+<link href="/client/dist/styles.bundle.css" rel="stylesheet" />

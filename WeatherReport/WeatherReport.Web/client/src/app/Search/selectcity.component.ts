@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { City } from '../Models/City';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-SelectCity',
   templateUrl: './SelectCity.component.html',
-  styleUrls: []
+  //styleUrls: []
 })
 export class SelectCityComponent implements OnInit {
 
@@ -19,8 +20,8 @@ export class SelectCityComponent implements OnInit {
 
   cityForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.cityForm = fb.group({
+  constructor() {
+    this.cityForm = new FormBuilder().group({
       'citySelect': ['', Validators.required]
     });
   }

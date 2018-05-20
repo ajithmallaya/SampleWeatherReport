@@ -1,11 +1,11 @@
 <div class="container">
-    <form [formGroup]="searchForm">
+    <!-- <form [formGroup]="searchForm"> -->
       <div class="form-group">
         <label>Search Country</label>
         <div class="input-group">
           <input  type="search" class="form-control id-search" 
                   placeholder = "Search" name = "searchCountry" 
-                  formControlName = "searchCountry">
+                  >
           <div class="input-group-btn">
             <button class="btn btn-default" 
                     type="submit" [disabled]="!searchForm.valid" 
@@ -19,5 +19,5 @@
           </small>
         <div class="alert" *ngIf="!searchForm.controls['searchCountry'].valid && searchForm.controls['searchCountry'].touched">{{ titleAlert }}</div>
       </div>
-    </form>
+    <!-- </form> -->
   </div>
