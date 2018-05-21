@@ -1,23 +1,27 @@
 <div class="container">
-    <!-- <form [formGroup]="searchForm"> -->
+    
       <div class="form-group">
         <label>Search Country</label>
         <div class="input-group">
-          <input  type="search" class="form-control id-search" 
-                  placeholder = "Search" name = "searchCountry" 
-                  >
-          <div class="input-group-btn">
-            <button class="btn btn-default" 
-                    type="submit" [disabled]="!searchForm.valid" 
-                    (click)="onSearch()" >
-                    <i class="glyphicon glyphicon-search"></i>
-                  </button>
-          </div>
+          <input  type="search" id ="selectedCountry" class="form-control id-search" 
+                  placeholder = "Search" name = "searchCountry" (change)="onSearch($event.target.value)"
+                  />
+                  <small id="searchCountryHelp" class="form-text text-muted">
+                    Please search from one of this list - US,UK,Australia.
+                  </small>
+                  <div></div>
+                  <div>
+                    <label>Select City</label>
+                    <select 
+                      class="form-control form-control-lg" (change)="onCityChange($event)">
+                      <option value="">Please select</option>
+                      <option selected="objCity.Name" *ngFor="let objCity of citylist" [value] ="objCity">{{objCity}}</option>
+                    </select>
+                  </div>
         </div>
-        <small id="searchCountryHelp" class="form-text text-muted">
-            Please eneter a country to search.
-          </small>
-        <div class="alert" *ngIf="!searchForm.controls['searchCountry'].valid && searchForm.controls['searchCountry'].touched">{{ titleAlert }}</div>
       </div>
-    <!-- </form> -->
-  </div>
+      
+    <div class="container" *ngIf="selectedCity">
+      <app-weather></app-weather>
+    </div>
+

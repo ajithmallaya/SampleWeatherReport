@@ -2,8 +2,7 @@
 <!-- <form [formGroup]="weatherForm"> -->
       <div class="row">
         <div class="col-sm-12 col-md-6">
-          <app-Search
-             (onCountrySearch)="onCountrySearched($event)"></app-Search>
+          <app-Search [locations] = geolocations></app-Search>
         </div>
       </div>
       <!-- </form> -->

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 using System.Web.Http.Description;
 using System.Web.Mvc;
 using WeatherReport.Web.Helper;
@@ -22,14 +23,12 @@ namespace WeatherReport.Web.Controllers
             _weatherService = weatherService;
         }
 
-        [System.Web.Http.Route("GetWeather/{country}/{city}")]
-        public ActionResult GetWeather(string country, string city)
+        [HttpGet]
+        [Route("Weather/{country}/{city}")]
+        public JsonResult GetWeather(string country, string city)
         {
-
-            return new JsonResult()
-            {
-                Data = _weatherService.GetWeather(country, city)
-            };
+            var data = _weatherService.GetWeather(country, city);
+            return Json(new { data = data}, JsonRequestBehavior.AllowGet );
         }
 
         public ActionResult Index()

@@ -3,7 +3,6 @@ import { City } from './Models/City';
 import { GeoLocation } from './Models/GeoLocations';
 import { Weather } from './Models/Weather';
 import { SearchService } from './Search/Search.service';
-import { Observable } from 'rxjs/Rx';
 //import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,12 +10,13 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    constructor(public elementRef: ElementRef,
-        public _searchService: SearchService,
-        public cities: Observable<City>,private geolocation: Observable<GeoLocation>) {
+  public geolocations: GeoLocation[];
+    constructor(public elementRef: ElementRef
+       ) {
       const native = this.elementRef.nativeElement;
-      this.geolocation = native.getAttribute('Locations');
-      _searchService.setLocation(this.geolocation);
+      this.geolocations = native.getAttribute('Locations');
+     // _searchService.setLocation(this.geolocations);
+     console.log(typeof(JSON.parse(this.geolocations.toString())));
         }
     
       
